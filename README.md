@@ -35,6 +35,7 @@ El retorno va con lo solicitado que para el caso de los ejemplos es:
     "endDate": "2020-12-31T23:59:59",
     "priceAmount": 35.5
 }
+<img src="/src/main/resources/static/pantalla4.png" width="800"/>
 
 ### TEST DE CLASES 
 <img src="/src/main/resources/static/pantalla2.png" width="400"/>
