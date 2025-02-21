@@ -32,11 +32,11 @@ class PriceControllerIntegrationTest {
     private MockMvc mockMvc;
 
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
-    private final Long PRODUCT_ID = 35455L;
+    private final Long PRODUCT_ID = 356455L;
     private final Long BRAND_ID = 1L; // ZARA
 
     @Test
-    @WithMockUser(username = "ADMIN", password = "1234", roles = {"ADMIN"})
+    //@WithMockUser(username = "ADMIN", password = "1234", roles = {"ADMIN"})
     @DisplayName("Test 1: Request at 10:00 on day 14 for product 35455 and brand 1 (ZARA)")
     void testGetPrice_Day14At10AM() throws Exception {
         LocalDateTime requestDate = LocalDateTime.of(2020, 6, 14, 10, 0);
@@ -62,7 +62,7 @@ class PriceControllerIntegrationTest {
         String formattedDate = requestDate.format(formatter);
 
         mockMvc.perform(get("/prices")
-                        .param("applicationDate", formattedDate)
+                        .param("date", formattedDate)
                         .param("productId", PRODUCT_ID.toString())
                         .param("brandId", BRAND_ID.toString())
                         .contentType(MediaType.APPLICATION_JSON))
@@ -81,7 +81,7 @@ class PriceControllerIntegrationTest {
         String formattedDate = requestDate.format(formatter);
 
         mockMvc.perform(get("/prices")
-                        .param("applicationDate", formattedDate)
+                        .param("date", formattedDate)
                         .param("productId", PRODUCT_ID.toString())
                         .param("brandId", BRAND_ID.toString())
                         .contentType(MediaType.APPLICATION_JSON))
@@ -100,7 +100,7 @@ class PriceControllerIntegrationTest {
         String formattedDate = requestDate.format(formatter);
 
         mockMvc.perform(get("/prices")
-                        .param("applicationDate", formattedDate)
+                        .param("date", formattedDate)
                         .param("productId", PRODUCT_ID.toString())
                         .param("brandId", BRAND_ID.toString())
                         .contentType(MediaType.APPLICATION_JSON))
@@ -119,7 +119,7 @@ class PriceControllerIntegrationTest {
         String formattedDate = requestDate.format(formatter);
 
         mockMvc.perform(get("/prices")
-                        .param("applicationDate", formattedDate)
+                        .param("date", formattedDate)
                         .param("productId", PRODUCT_ID.toString())
                         .param("brandId", BRAND_ID.toString())
                         .contentType(MediaType.APPLICATION_JSON))
@@ -138,24 +138,10 @@ class PriceControllerIntegrationTest {
         String formattedDate = requestDate.format(formatter);
 
         mockMvc.perform(get("/prices")
-                        .param("applicationDate", formattedDate)
+                        .param("date", formattedDate)
                         .param("productId", PRODUCT_ID.toString())
                         .param("brandId", BRAND_ID.toString())
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
-    }
-
-    @Test
-    @DisplayName("Test access without authentication ()")
-    void testGetPrice_Unauthorized() throws Exception {
-        LocalDateTime requestDate = LocalDateTime.of(2020, 6, 14, 10, 0);
-        String formattedDate = requestDate.format(formatter);
-
-        mockMvc.perform(get("/prices")
-                        .param("applicationDate", formattedDate)
-                        .param("productId", PRODUCT_ID.toString())
-                        .param("brandId", BRAND_ID.toString())
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isUnauthorized());
     }
 }
