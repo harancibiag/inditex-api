@@ -15,9 +15,12 @@ inditex-api\src\main\java\es\inditex\inditexapi\InditexApiApplication.java
 Se implementa seguridad (no solicitada va como valor agregado) con la 
 finalidad de que no accesan usuarios no autorizados, los datos para ingresar son:
 username -> ADMIN    clave->1234
+<img src="/src/main/resources/static/pantalla5.png" width="800"/>
+<img src="/src/main/resources/static/pantalla6.png" width="800"/>
 
 Se debe copiar el jwt-token y pegarlo dentro del boton "Authorize" 
 para lograr acceder al servicio
+<img src="/src/main/resources/static/pantalla7.png" width="800"/>
 
 ### Endpoint /prices (GET)
 Se implementa el servicio retornando los valores solicitados en la evaluacion.
